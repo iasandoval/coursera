@@ -23,6 +23,16 @@ library(devtools) // Load devtools
 find_rtools() // Should return TRUE
 ```
 
+Get Current Work Directory:
+```
+getWD()
+```
+
+Set Current Work Directory:
+```
+setWD("dir")
+```
+
 Leer un archivo CSV
 ```
 x <- read.csv("hw1_data.csv")
