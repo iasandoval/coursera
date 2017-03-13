@@ -23,3 +23,10 @@ library(devtools) // Load devtools
 find_rtools() // Should return TRUE
 ```
 
+## SETTING WORKING DIRECTORY
+
+Current Work Directory:
+```
+getWD()
+```
+
