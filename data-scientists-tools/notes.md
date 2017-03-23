@@ -1,103 +1,54 @@
-## INSTALLATION PROCESS
+## Instalación
 
 - Install [R](https://cran.r-project.org/)
 - Install [RStudio](https://www.rstudio.com/products/rstudio/download/)
-- Install [RTools](https://cran.r-project.org/bin/windows/Rtools/) - Windows Only 
+- Install [RTools](https://cran.r-project.org/bin/windows/Rtools/) - Windows Only
 	* **Don't forget to select the checkbox for Windows PATH!!**
 
 After RTools installations, **install devtools R package** in RStudio.
 
-Find a package:
+## Comandos Básicos - Semana 1
+
+- Ver [Comandos Básicos](semana1.md).
+
+## Semana 2
+
+### Estructuras de Control
+- ver [Estructuras de control](semana2-loops.md).
+
+### Funciones
+
+1. Crear Archivo .R
+2. Escribir la función
+3. Cargar la función
+	```
+	source("funcion.R")
+	```
+### Dates and Times
+* Las fechas son represendatas por la clase Date
+* La hora es representado por las clases POSIXct o POSIXlt
+* El formato de fecha es YYYY-MM-DD
 ```
-find.package("devtools")
+x <- as.Date("2017-01-01")
+```
+```
+x <- Sys.time()
+x
+## [1] "2017-03-23 16:26:22 EDT"
+
+p <- as.POSIXlt(x)
+names(unclass(p))
+## [1] "sec"    "min"    "hour"   "mday"   "mon"   
+## [6] "year"   "wday"   "yday"   "isdst"  "zone"  
+## [11] "gmtoff"
+
+p$sec
+## [1] 22.82708
+```
+Ayuda sobre Formato de fechas y hora
+```
+?strptime
 ```
 
-Install packages:
-```
-install.packages("devtools")
-```
-
-Verify RTools installation:
-```
-library(devtools) // Load devtools
-find_rtools() // Should return TRUE
-```
-
-Get Current Work Directory:
-```
-getWD()
-```
-
-Set Current Work Directory:
-```
-setWD("dir")
-```
-
-Leer un archivo CSV
-```
-x <- read.csv("hw1_data.csv")
-```
-
-Obtener el nombre de las columnas
-```
-colnames(x)
-```
-
-Obtener las primeras 2 filas
-```
-head(x,2)
-```
-
-Obtener las últimas 2 filas
-```
-tail(x,2)
-```
-
-Obtener la fila 47
-```
-x[47,]
-```
-
-Obtener el valor de Ozone de la fila 47
-```
-x$Ozone[47]
-```
-
-Suma de valores vacíos en la columna Ozone
-```
-sum(is.na(x$Ozone))
-```
-
-La media de la columna Ozone, excluyendo los NA
-```
-mean(x$Ozone, na.rm = TRUE)
-```
-
-Subset donde Ozone > 31 y Temp > 90 y Obtener la Media de Solar.R
-```
-sub <- subset(x, Ozone > 31 & Temp > 90)
-mean(sub$Solar.R, na.rm = TRUE)
-```
-
-La media de la columna Temp, cuando Month es igual a 6
-```
-mean(subset(x, Month == 6)$Temp)
-```
-
-Valor máximo de la columna Ozone en el mes de Mayo
-```
-max(subset(q, Month == 5)$Ozone, na.rm = TRUE)
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
+## Semana 2 Assignments
+- Ver las [Actividades de la Semana 2](semana2-assignments.md).
