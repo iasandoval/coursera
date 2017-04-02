@@ -119,3 +119,75 @@ debug(ls)
 What happens when you next call the ‘ls’ function?
 
 Execution of ‘ls’ will suspend at the beginning of the function and you will be in the browser.
+
+## Semana 4
+
+La función "srt" despliega de forma compacta el contenido de un objeto
+```
+str(x)
+```
+
+### Generating Random Numbers
+rnorm: Generate random Normal variables with a given mean and standard deviation.
+dnorm: Evaluate the normal probability density (with a given mean/SD) at a point (or vector or points).
+pnorm: Evaluate the cumulative distribution function for a Normal distribution.
+rpois: Generate random Poisson variates with a given rate.
+
+Clear console RStudio ctrl + L
+
+Alwast set random number the seed
+```
+set.seed(1)
+```
+
+### Simulating Linear Model
+
+### Random sampling
+```
+set.seed(1)
+sample(1:10, 4)
+## Sample letters
+sample(letters, 5)
+## Permutation
+sample(1:10)
+## Sample with replacement
+sample(1:10, replace = TRUE)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
