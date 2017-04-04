@@ -1,7 +1,8 @@
 ## Semana 2 - Estructuras de control
+[Regresar a Notas](notes.md).
 
 If-Else
-```
+```Rscript
 if(<condition1>) {
 	## If condition1
 } else if(<condition2>) {
@@ -12,14 +13,13 @@ if(<condition1>) {
 ```
 
 Valid if-else estructure
-```
+```Rscript
 if(x > 3) {
 	y <- 10
 } else {
 	y <- 0
 }
-```
-```
+
 y <- if(x > 3) {
 	10
 } else {
@@ -28,13 +28,12 @@ y <- if(x > 3) {
 ```
 
 For Loops
-```
+```Rscript
 for(i in 1:10) {
 	print(i)
 }
-```
-Ejemplos de For Loops
-```
+
+# Ejemplos de For Loops
 x <- c("a","b", "c","d")
 for(i in 1:4) {
 	print(x[i])
@@ -52,7 +51,7 @@ for(i in 1:4) print(x[i])
 ```
 
 While Loops
-```
+```Rscript
 count <- 0
 while(count < 10) {
 	print(count)
@@ -62,7 +61,7 @@ while(count < 10) {
 
 Repeat, Next, Break
 
-```
+```Rscript
 x0 <- 1
 tol <- 1e-8
 
@@ -75,8 +74,7 @@ repeat {
 		x0 <- x1
 	}
 }
-```
-```
+
 for(i in 1:100) {
 	if(i<=20){
 		## Skip the first 20 interatios
@@ -85,3 +83,5 @@ for(i in 1:100) {
 	## Do something here
 }
 ```
+
+[Regresar a Notas](notes.md).
