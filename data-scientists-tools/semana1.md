@@ -1,5 +1,5 @@
 ## Funciones - Semana 1
-[Regresar a Notas](notes.md).
+[Regresar a Notas](notes.md#semana-1)
 
 Paquetes de R
 ```Rscript
@@ -219,4 +219,4 @@ cnames <- c("patient", "age", "weight", "bp", "rating", "test")
 colnames(my_data) <- cnames
 ```
 
-[Regresar a Notas](notes.md).
+[Regresar a Notas](notes.md#semana-1)

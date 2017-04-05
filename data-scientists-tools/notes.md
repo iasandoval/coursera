@@ -13,7 +13,7 @@ After RTools installations, **install devtools R package** in RStudio.
 
 ## Semana 2
 
-## Funciones utilizadas
+### Funciones utilizadas
 - Ver [Funciones Semana 2](semana2.md).
 
 ### Estructuras de Control

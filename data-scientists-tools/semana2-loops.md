@@ -1,5 +1,5 @@
 ## Semana 2 - Estructuras de control
-[Regresar a Notas](notes.md).
+[Regresar a Notas](notes.md#estructuras-de-control)
 
 If-Else
 ```Rscript
@@ -84,4 +84,4 @@ for(i in 1:100) {
 }
 ```
 
-[Regresar a Notas](notes.md).
+[Regresar a Notas](notes.md#estructuras-de-control)
