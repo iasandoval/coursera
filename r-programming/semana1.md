@@ -12,8 +12,11 @@ install.packages("devtools")
 
 Verify RTools installation:
 ```Rscript
-library(devtools) // Load devtools
-find_rtools() // Should return TRUE
+# Load devtools
+library(devtools)
+
+# Should return TRUE
+find_rtools()
 ```
 
 Directorio de trabajo
@@ -27,7 +30,7 @@ setWD("dir")
 
 Leer un archivo CSV
 ```Rscript
-x <- read.csv("hw1_data.csv")
+x <- read.csv("semana1/hw1_data.csv")
 ```
 
 Obtener el nombre de las columnas
@@ -74,7 +77,7 @@ mean(subset(x, Month == 6)$Temp)
 ```
 
 Valor máximo de la columna Ozone en el mes de Mayo
-```v
+```Rscript
 max(subset(q, Month == 5)$Ozone, na.rm = TRUE)
 ```
 
@@ -140,7 +143,7 @@ Subsetting Vectors
 # Primeros 10 elementos de un vector
 x[1:10]
 
-# What do you think x[is.na(x)] will give you? 
+# What do you think x[is.na(x)] will give you?
 # A vector of all NAs
 
 # Crear vector sin NA
@@ -194,7 +197,7 @@ dim(my_vector)
 
 # La funcion dim() permite obtener o colocar el atributo `dim` para un objeto
 dim(my_vector) <- c(4,5)
-dim(my_vector) 
+dim(my_vector)
 ## [1] 4 5
 
 # Ver los atributos de una matriz

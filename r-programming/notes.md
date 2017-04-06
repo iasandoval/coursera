@@ -1,4 +1,4 @@
-# Notas del Curso de "R Programming"
+# Notas del Curso "R Programming"
 
 ## Instalación
 
@@ -50,8 +50,21 @@ names(unclass(p))
 ## [6] "year"   "wday"   "yday"   "isdst"  "zone"  
 ## [11] "gmtoff"
 
+# Obtener los segundos
 p$sec
 ## [1] 22.82708
+
+#Obtener el dia de la semana
+weekdays(x)
+
+# Obtener el mes
+months(x)
+
+# Quarter del año (Q1-Q4)
+quarters(x)
+
+#Diferencia de dias entre fechas
+difftime(Sys.time(), t1, units = 'days')
 ```
 
 Ayuda sobre Formato de fechas y hora
@@ -104,8 +117,6 @@ Alwast set random number the seed
 set.seed(1)
 ```
 
-### Simulating Linear Model
-
 ### Random sampling
 ```Rscript
 set.seed(1)
@@ -122,6 +133,8 @@ sample(1:10, replace = TRUE)
 ```
 
 ### Programming Assignment
+- [Instrucciones](semana4/ProgAssignment3.pdf).
+- Ver [descripción de las variables](semana4/Hospital_Revised_Flatfiles.pdf).
 - Ver [best.R](semana4/best.R).
 - Ver [rankall.R](semana4/rankall.R).
 - Ver [rankhospital.R](semana4/rankhospital.R).
