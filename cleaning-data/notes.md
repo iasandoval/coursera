@@ -27,8 +27,11 @@ dir.create()
 3. Descarga de archivos
 ````Rscript
 # Descarga un archivo de internet
-# Method curl para HTTPS
+# Method curl para HTTPS en MAC
 download.file(url, destfile="data/file.csv", method="curl")
+# Para windows usar
+download.file(url, destfile="data/file.csv", method="wininet", mode = "wb")
+
 dateDownloaded <- Date()
 
 # Lista archivos del Directorio data
@@ -44,7 +47,9 @@ read.csv("directory/file.csv")
 
 Archivos de Excel
 ```Rscript
-lybrary(xlsx)
+library(xlsx)
+# Si hay problemas de Java usar:
+library(openxlsx)
 read.xlsx("directory/file.xlsx", sheetIndex=1, header=TRUE)
 
 # Leer filas y columnas especificas
@@ -53,7 +58,7 @@ read.xlsx("directory/file.xlsx", sheetIndex=1, colIndex=2:3, rowIndex=1:4)
 
 Archivos XML
 ```Rscript
-lybrary(xml)
+library(XML)
 fileUrl <- "http://www.w3school.com/xml/simple.xml"
 doc <- xmlTreeParse(fileUrl, useInternal=TRUE)
 rootNode <- xmlRoot(doc)
@@ -107,6 +112,9 @@ data.frame(x=rnorm(9), y=rep(c("a","b","c"), each=3), z=rnorm(9))
 # Ver tables en memoria
 tables()
 ```
+
+### Quiz Semana 1
+- Ver (function quiz semana 1)[semana1/semana1-quiz.R]
 
 
 ## Semana 2
