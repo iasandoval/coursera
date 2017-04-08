@@ -114,7 +114,7 @@ tables()
 ```
 
 ### Quiz Semana 1
-- Ver (function quiz semana 1)[semana1/semana1-quiz.R]
+- Ver [function quiz semana 1](semana1/semana1-quiz.R).
 
 
 ## Semana 2
