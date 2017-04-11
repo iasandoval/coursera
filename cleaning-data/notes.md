@@ -2,9 +2,9 @@
 
 ## Semana 1
 
-- [Descarga de archivos](semana1.md)
-- [Leer Archivos](semana1.md)
-- [data.table](semana1.md)
+- [Descarga de archivos](semana1.md#descarga-de-archivos)
+- [Leer Archivos](semana1.md#leer-archivos)
+- [data.table](semana1.md#datatable)
 
 ### Semana 1 - Quiz
 - Ver [function quiz semana 1](semana1/semana1-quiz.R).
@@ -13,8 +13,8 @@
 
 ### Funciones utilizadas
 
-- [Leer de MySQL](semana2.md)
-- [Leer HDF5](semana2.md)
+- [Leer de MySQL](semana2.md#leer-de-mysql)
+- [Leer HDF5](semana2.md#leer-hdf5)
 
 ## Semana 3
 
