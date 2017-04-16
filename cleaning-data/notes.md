@@ -15,6 +15,12 @@
 
 - [Leer de MySQL](semana2.md#leer-de-mysql)
 - [Leer HDF5](semana2.md#leer-hdf5)
+- [Leer datos desde la Web](semana2.md#leer-datos-desde-la-web)
+- [Leer datos de API](semana2.md#leer-datos-de-api)
+- [Leer datos de otros orígenes](semana2.md#leer-datos-de-otros-orígenes)
+
+### Semana 2 - Quiz
+- Ver [function quiz semana 2](semana2/semana2-quiz.R).
 
 ## Semana 3
 
