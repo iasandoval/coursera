@@ -11,8 +11,6 @@
 
 ## Semana 2
 
-### Funciones utilizadas
-
 - [Leer de MySQL](semana2.md#leer-de-mysql)
 - [Leer HDF5](semana2.md#leer-hdf5)
 - [Leer datos desde la Web](semana2.md#leer-datos-desde-la-web)
@@ -24,8 +22,14 @@
 
 ## Semana 3
 
-### Funciones utilizadas
-- Ver [Funciones Semana 3](semana3.md).
+- [Subsetting and Sorting](semana3.md#subsetting-and-sorting)
+- [Summarizing Data](semana3.md#summarizing-data)
+- [Creating New Variables](semana3.md#creating-new-variables)
+- [Resharping Data](semana3.md#resharping-data)
+- [Managing Data FRames with dplyr - Introduction](semana3.md#)
+- [Managing Data FRames with dplyr - Basic Tools](semana3.md#)
+- [Merging Data](semana3.md#)
+
 
 ## Semana 4
 
