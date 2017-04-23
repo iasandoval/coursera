@@ -162,7 +162,7 @@ table(restData$zipCode %in% c("21212", "21213"))
 restData[restData$zipCode %in% c("21212", "21213")]
 ```
 
-Cross tabs
+Cross tabs (Referencia cruzada)
 ```Rscript
 # Load Data fro R datasets
 data(UCBAdmissions)
@@ -170,7 +170,7 @@ DF = as.data.frame(UCBAdmissions)
 summary(DF)
 
 # Identificar la relación que existe en el dataset
-xt = xtabs(Freq ~ Fender + Admit, data=DF)
+xt = xtabs(Freq ~ Gender + Admit, data=DF)
 
 # Muestra la frecuencia de los admitted y los rejected por Gender
 xt
@@ -320,24 +320,211 @@ carMelt = melt(mtcars, id=c("carname", "gear", "cyl"), measure.vars=c("mpg", "hp
 head(carMelt, n=3)
 
 tail(carMelt, n=3)
-
 ```
 
+Casting data frames
 ```Rscript
+cylData = dcast(carMelt, cyl ~ variable)
+
+cylData = dcast(carMelt, cyl ~ variable, mean)
 ```
 
-### Managing Data FRames with dplyr - Introduction
+Averaging values
+```Rscript
+head(InsectSprays)
 
+tapply/InsectSpray$count, InsectSpray$spray, sum
+```
 
+Another way - split
+```Rscript
+spIns = split(INsectSpracys$count, InsectSpracys$spray)
 
-### Managing Data FRames with dplyr - Basic Tools
+sprCount = lapply(spIns, sum)
 
+unList(sprCount)
 
+sapply(spInst, sum)
+```
+
+plyr package
+```Rscript
+ddply(InsectSpracys, .(spray), summarize, sum=sum(count))
+```
+
+Creating new variable
+```Rscript
+spraySums = ddply(InsectSprays, .(spray), summarize, sum=ave(count, FU=sum))
+dim(spraySums)
+
+head(spraySums)
+```
+
+### Managing Data FRames with dplyr
+
+Cargar la Librería y el data set
+```Rscript
+# Carga la librería
+library(dplyr)
+options(width = 105)
+
+# carga el data set
+chicago = readRDS("chicago.rds)
+
+# Muestra las dimensiones del data set
+dim(chicago)
+
+# Muestra los tipos de datos
+str(chicago)
+
+# Muestra los nombres de las variables
+names(chicago)
+```
+
+Select
+```Rscript
+# Selecciona desde la columna city hasta dptp
+head(select(chicago, city:dptp))
+
+# Selecciona todas las columnas excepto desde la columna city hasta dptp
+head(select(chicago, -(city:dptp))
+```
+
+Filter
+```Rscript
+# Subset donde om25tmean2 sea mayor que 30
+chic.f = filter(chicago, pm25tmean2 > 30)
+
+# Subset donde om25tmean2 > 30 y tmpd > 80
+chic.f = filter(chicago, pm25tmean2 > 30 & tmpd > 80)
+```
+
+Arrange
+```Rscript
+# Ordenar el data set por date
+chicago = arrange(chicago, date)
+
+# Ordenar el data set por date descendente
+chicago = arrange(chicago, desc(date))
+```
+
+Rename
+```Rscript
+# Renombrar una variable
+# newVariable = oldVariable
+chicago = rename(chicago, pm25 = pm25tmean2, dewpoint = dptp)
+```
+
+Mutate
+```Rscript
+# Transform or create new variables
+# Crear nueva variable
+chicago = mutate(chicago, pm25detrend = pm25-mean(pm25, na.rm=TRUE))
+```
+
+Group By
+```Rscript
+# Crea nueva variable con valores cold and hot
+chicago = mutate(chicago, tempcat = factor(1 * (tmpd > 80), labels = c("cold", "hot")))
+
+# Agrupa los valores por tempcat
+hotcold = group_by(chicago, tempcat)
+
+# Sumariza por tempcat
+summarize(hotcold, pm25 = mean(pm25), o3 = max(o3tmean2), no2 = median(no2tmean2))
+
+# Tendencia a través del tiempo
+chichago = mutate(chicago, year = as.POSIXlt(date)$year + 1900)
+years = group_by(chicago, years)
+summarize(years, pm25 = mean(pm25, na.rm=TRUE), o3 = max(o3tmean2), no2 = median(no2tmean2))
+```
+
+Pipeline operator %>%
+```Rscript
+# Chain various operators in one sequence
+chicago %>% mutate(month = as.POSIXlt(date)$mon + 1) %>% group_by(month) %>% summarize(pm25 = mean(pm25, na.rm=TRUE), o3 = max(o3tmean2), no2 = median(no2tmean2))
+```
 
 ### Merging Data
 
+Descarga de archivos
+```Rscript
+file1 = "https://dl.dropboxusercontent.com/u/7710864/data/reviews-apr29.csv"
+file2 = "https://dl.dropboxusercontent.com/u/7710864/data/solutions-apr29.csv"
+download.file(file1, destfile="semana3/reviews.csv", method="wininet", mode = "wb")
+download.file(file2, destfile="semana3/solutions.csv", method="wininet", mode = "wb")
 
+reviews = read.csv("semana3/reviews.csv")
+solutions = read.csv("semana3/solutions.csv")
 
+head(reviews, 2)
 
+head(solutions, 2)
+```
+
+Merge command
+- By default, berge commend will megr by common names variables
+```Rscript
+names(reviews)
+
+names(solutions)
+# variables en comun: id start, stop, time_left
+mergedData = merge(reviews, solutions, all=TRUE)
+
+# Especificar por cuales variables hacer el merge
+mergedData = merge(reviews, solutions, by.x="solutions_id", by.y="id", all=TRUE)
+
+head(mergedData)
+```
+
+Using join in the plyr package
+```Rscript
+# Join 2 data frames
+df1 = data.frame(id=sameple(1:10), x=rnorm(10))
+df2 = data.frame(id=sameple(1:10), x=rnorm(10))
+arrange(join(df1, df2), id)
+
+# Join more than 2 data frames
+df1 = data.frame(id=sameple(1:10), x=rnorm(10))
+df2 = data.frame(id=sameple(1:10), x=rnorm(10))
+df3 = data.frame(id=sameple(1:10), x=rnorm(10))
+dfList = c(df1, df2, df3)
+join_all(dfLIst)
+```
+
+### Using tidyr
+
+```Rscript
+library(tidyr)
+
+# Gather columns into key-value pairs
+?gather
+# Data set, key (sex), value (count), all values except grade
+gather(students, sex, count, -grade)
+
+res <- gather(students2, sex_class, count, -grade)
+
+# Separate one column into multiple columns
+?separate
+
+separate(data = res, col = sex_class, into = c("sex", "class"))
+
+# Spread a key-value pair across multiple columns.
+students3 %>% 
+  gather(class, grade, class1:class5, na.rm = TRUE) %>%
+  spread(test, grade)
+  
+# Library with parse_number()
+library(readr)
+
+students3 %>% 
+  gather(class, grade, class1:class5, na.rm = TRUE) %>%
+  spread(test, grade) %>%
+  mutate(class = parse_number(class))
+  
+
+# Efficiently bind multiple data frames by row and column
+
+```
 
 [Regresar a Notas](notes.md#semana-3)

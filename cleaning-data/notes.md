@@ -26,10 +26,15 @@
 - [Summarizing Data](semana3.md#summarizing-data)
 - [Creating New Variables](semana3.md#creating-new-variables)
 - [Resharping Data](semana3.md#resharping-data)
-- [Managing Data FRames with dplyr - Introduction](semana3.md#)
-- [Managing Data FRames with dplyr - Basic Tools](semana3.md#)
-- [Merging Data](semana3.md#)
+- [Managing Data Frames with dplyr](semana3.md#managing-data-frames-with-dplyr)
+- [Merging Data](semana3.md#merging-data)
+- [Using tidyr](semana3.md#using-tidyr)
 
+### Referencias
+- Artículo sobre [Tidy Data](http://vita.had.co.nz/papers/tidy-data.pdf)
+
+### Semana 3 - Quiz
+- Ver [function quiz semana 3](semana3/semana3-quiz.R).
 
 ## Semana 4
 
