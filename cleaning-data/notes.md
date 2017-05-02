@@ -38,5 +38,5 @@
 
 ## Semana 4
 
-### Funciones utilizadas
-- Ver [Funciones Semana 4](semana4.md).
+### Semana 4 - Quiz
+- Ver [function quiz semana 4](semana4/semana4-quiz.R).
