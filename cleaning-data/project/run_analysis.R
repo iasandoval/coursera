@@ -5,14 +5,43 @@ run_analysis = function(extractZip = TRUE) {
   loadLibs()
   
   # Download dataset
-  datasetUrl = "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
-  datasetDest = download(datasetUrl, "dataset.zip")
+  datasetDest = downloadDataset()
   
   # Extract Dataset
   if (extractZip) {
-    extract(datasetDest)  
+    extract(datasetDest)
   }
   
+  # Read Supporting Metadata, train data and test data
+  preProcess()
+  
+  # 1. Merges the training and the test sets to create one data set.
+  executePart1()
+  
+  # 2. Extracts only the measurements on the mean and standard deviation for each measurement.
+  executePart2()
+  
+  # 3. Uses descriptive activity names to name the activities in the data set
+  executePart3()
+  
+  # 4. Appropriately labels the data set with descriptive variable names. 
+  executePart4()
+  
+  # 5 From the data set in step 4, creates a second, independent tidy data set 
+  # with the average of each variable for each activity and each subject.
+  executePart5()
+  
+}
+
+downloadDataset = function() {
+  datasetUrl = "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
+  datasetDest = download(datasetUrl, "dataset.zip")
+  
+  return(datasetDest)
+}
+
+# Pre-Processing of the data
+preProcess = function() {
   # Read Supporting Metadata
   print("Reading Supporting Metadata...")
   featureNames = read.table("UCI HAR Dataset/features.txt")
@@ -40,40 +69,6 @@ run_analysis = function(extractZip = TRUE) {
   toGlobal("subjectTest", subjectTest)
   toGlobal("activityTest", activityTest)
   toGlobal("featuresTest", featuresTest)
-  
-  
-  # 1. Merges the training and the test sets to create one data set.
-  executePart1()
-  
-  # 2. Extracts only the measurements on the mean and standard deviation for each measurement.
-  executePart2()
-  
-  # 3. Uses descriptive activity names to name the activities in the data set
-  executePart3()
-  
-  # 4. Appropriately labels the data set with descriptive variable names. 
-  executePart4()
-  
-  # 5 From the data set in step 4, creates a second, independent tidy data set 
-  # with the average of each variable for each activity and each subject.
-  
-  # Set the subject variable in the data as a factor
-  extractedData$Subject = as.factor(extractedData$Subject)
-  extractedData = data.table(extractedData)
-  toGlobal("extractedData", extractedData)
-  
-  # View extracted data
-  view(extractedData)
-  
-  # Create tidyData as a set with average for each activity and subject
-  tidyData = aggregate(. ~Subject + Activity, extractedData, mean)
-  
-  # Order tidayData according to subject and activity
-  tidyData = tidyData[order(tidyData$Subject,tidyData$Activity),]
-  
-  # Write tidyData into a text file
-  print("Writing Tidy.txt")
-  write.table(tidyData, file = "Tidy.txt", row.names = FALSE)
 }
 
 # 1. Merges the training and the test sets to create one data set.
@@ -94,7 +89,7 @@ executePart1 = function() {
   # Add activity and subject as a column to features
   colnames(activityMerge) = "Activity"
   colnames(subjectMerge) = "Subject"
-  completeData <- cbind(featuresMerge, activityMerge, subjectMerge)
+  completeData = cbind(featuresMerge, activityMerge, subjectMerge)
   toGlobal("completeData", completeData)
 }
 
@@ -164,6 +159,28 @@ executePart4 = function() {
   toGlobal("extractedData", extractedData)
 }
 
+# 5 From the data set in step 4, creates a second, independent tidy data set 
+# with the average of each variable for each activity and each subject.
+executePart5 = function() {
+  # Set the subject variable in the data as a factor
+  extractedData$Subject = as.factor(extractedData$Subject)
+  extractedData = data.table(extractedData)
+  toGlobal("extractedData", extractedData)
+  
+  # View extracted data
+  View(extractedData)
+  
+  # Create tidyData as a set with average for each activity and subject
+  tidyData = aggregate(. ~Subject + Activity, extractedData, mean)
+  
+  # Order tidayData according to subject and activity
+  tidyData = tidyData[order(tidyData$Subject,tidyData$Activity),]
+  
+  # Write tidyData into a text file
+  print("Writing Tidy.txt")
+  write.table(tidyData, file = "Tidy.txt", row.names = FALSE)
+}
+
 # Assign to global environment
 toGlobal = function(name, var) {
   assign(name, var, .GlobalEnv)
@@ -198,11 +215,16 @@ download = function(url, name) {
 }
 
 # Load libs
-loadLibs <- function() {
+loadLibs = function() {
   
   if(!require(dplyr)){
     install.packages("dtplyr")
   }
   
+  if(!require(data.table)){
+    install.packages("data.table")
+  }
+  
   library(dtplyr)
+  library(data.table)
 }
