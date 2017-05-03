@@ -30,7 +30,7 @@ You should create one R script called run_analysis.R that does the following.
 
 1. [run_analysis.R](run_analysis.R): R-code to run on the data set.
 2. [Tidy.txt](Tidy.txt): The clean data extracted from the original data using above R code.
-3. [CodeBook](CodeBook.md): Code Book with the reference to variables in Tidy.txt
+3. [CodeBook](codebook.md): Code Book with the reference to variables in Tidy.txt
 
 # Getting Started
 
@@ -47,7 +47,7 @@ By default, the function will download and extract the zip file
 ````Rscript
 run_analysis()
 ````
-If the parameter extractZip is FALSE, the function will skip the extact of the zip file.
+If the parameter extractZip is FALSE, the function will skip the extract of the zip file.
 ````Rscript
 run_analysis(FALSE)
 ````
@@ -90,6 +90,7 @@ run_analysis = function(extractZip = TRUE) {
 ## Pre-Processing of the data
 ### Download data set
 This step is encapsuled under the function ````downloadDataset()````.
+
 This functions returns the location where the file was downloaded.
 ````Rscript
 # Download dataset
@@ -103,6 +104,7 @@ downloadDataset = function() {
 
 ### Extract zip file
 This step is encapsuled under the function ````extract()````.
+
 The default location of the extracted zip is "UCI HAR Dataset".
 ````Rscript
 # Extract zip function
@@ -151,6 +153,7 @@ preProcess = function() {
 
 ## Step 1
 Merges the training and the test sets to create one data set.
+
 This step is encapsuled under the function ````executePart1()````.
 ````Rscript
 # 1. Merges the training and the test sets to create one data set.
@@ -178,6 +181,7 @@ executePart1 = function() {
 
 ## Step 2
 Extracts only the measurements on the mean and standard deviation for each measurement.
+
 This step is encapsuled under the function ````executePart2()````.
 ````Rscript
 # 2. Extracts only the measurements on the mean and standard deviation for each measurement.
@@ -200,6 +204,7 @@ executePart2 = function() {
 
 ## Step 3
 Uses descriptive activity names to name the activities in the data set.
+
 This step is encapsuled under the function ````executePart3()````.
 ````Rscript
 print("Setting descriptive activity names to name the activities in the data set...")
@@ -217,6 +222,7 @@ toGlobal("extractedData", extractedData)
 
 ## Step 4
 Appropriately labels the data set with descriptive variable names.
+
 This step is encapsuled under the function ````executePart4()````.
 ````Rscript
 # 4. Appropriately labels the data set with descriptive variable names.
@@ -253,6 +259,7 @@ executePart4 = function() {
 
 ## Step 5
 From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+
 This step is encapsuled under the function ````executePart5()````.
 ````Rscript
 # Set the subject variable in the data as a factor
@@ -277,10 +284,10 @@ This step is encapsuled under the function ````executePart5()````.
 ## Support Funcions
 These are support function of ````run_analysis()````, which are used to achieve the goal of this project.
 
-1. [loadLibs function](README.md#loadLibs-function)
-2. [Download function](README.md#Download-function)
-3. [Extract zip function](README.md#Extract-zip-function)
-4. [Assign to global environment](README.md#Assign-to-global-environment)
+1. [loadLibs function](README.md#loadlibs-function)
+2. [Download function](README.md#download-function)
+3. [Extract zip function](README.md#extract-zip-function)
+4. [Assign to global environment](README.md#assign-to-global-environment)
 
 ### loadLibs function
 Function to load the libraries required on this project.
