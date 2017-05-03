@@ -8,3 +8,5 @@
 *.csv
 *.jpg
 *.stackdump
+cleaning-data/project/UCI HAR Dataset/
+*.zip
