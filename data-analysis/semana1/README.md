@@ -5,7 +5,7 @@
 
 **Which of the following would NOT be a good use of analytic graphing?**
 1. To show multivariate data
-**2. To decide which horse to bet on at the track**
+2. **To decide which horse to bet on at the track**
 3. To show causality, mechanism, explanation
 4. To show comparisons
 
@@ -13,12 +13,14 @@
 1. That the children in the control group are healthier
 2. That the air in the control group is cleaner than the air in the other group
 3. That the air cleaner increases pollution
-**4. That the air cleaner reduces pollution**
+4. **That the air cleaner reduces pollution**
 
 #### The principles of analytic graphing
 
-**The first principle:** To show a comparison. 
+**The first principle:** To show a comparison.
+
 **The second principle:** To show causality or a mechanism of how your theory of the data works. 
+
 **The third principle:** Multivariate data!
 
 **What is multivariate data?**
@@ -42,25 +44,25 @@ In technical (scientific) literature this term means more than 2 variables. Two-
 
 **Which of the following is NOT a good principle of graphing?**
 1. Content is king
-**2. Having unreadable labels**
+2. **Having unreadable labels**
 3. To describe and document evidence
 4. To integrate multiple modes of evidence
 
 **Which of the following is NOT a good principle of graphing?**
 1. To demonstrate a causative mechanism underlying a correlation
-**2. To prove you're always right**
+2. **To prove you're always right**
 3. Content is king
 4. To show two competing hypotheses
 
 **Which of the following is NOT a good principle of graphing?**
 1. Content is king
-**2. To show that some fonts are better than others**
+2. **To show that some fonts are better than others**
 3. To integrate different types of evidence
 4. To show good labels and scales
 
 **True or False? Color is king.**
 1. True
-**2. False**
+2. **False**
 
 ### Lesson 2 - Exploratory Graphs
 
@@ -68,10 +70,10 @@ In technical (scientific) literature this term means more than 2 variables. Two-
 1. To understand data properties
 2. To suggest modeling strategies
 3. To find patterns in data
-**4. To find a color that best matches the shirt you're wearing**
+4. **To find a color that best matches the shirt you're wearing**
 
 **Which of the following cliches captures the essence of graphics?**
-**1. A picture is worth a 1000 words**
+1. **A picture is worth a 1000 words**
 2. The apple doesn't fall far from the tree
 3. To err is human, to forgive divine
 4. A rose by any other name smells as sweet
@@ -98,9 +100,12 @@ Histograma
 # Genera un histograma verde
 hist(ppm, col = "green")
 
-# This one-dimensional plot, with its grayscale representation, gives you a little more detailed information about how many
-# data points are in each bucket and where they lie within the bucket. It shows (through density of tick marks) that the
-# greatest concentration of counties has between 9 and 12 micrograms per cubic meter just as the histogram did.
+# This one-dimensional plot, with its grayscale representation, 
+# gives you a little more detailed information about how many
+# data points are in each bucket and where they lie within the bucket. 
+# It shows (through density of tick marks) that the
+# greatest concentration of counties has between 9 and 12 micrograms 
+# per cubic meter just as the histogram did.
 rug(ppm)
 
 # Breaks: number of buckets to split the data into
@@ -163,19 +168,19 @@ plot(east$latitude, east$pm25, main = "East")
 ````
 
 **Which of the following characterizes exploratory plots?**
-**1. quick and dirty**
+1. **quick and dirty**
 2. slow and clean
 3. slow and steady
 4. quick and dead
 
 **True or false? Plots let you summarize the data (usually graphically) and highlight any broad features**
-**1. True**
+1. **True**
 2. False
 
 **Which of the following do plots NOT do?**
 1. Suggest modeling strategies for the "next step"
 2. Summarize the data (usually graphically) and highlight any broad features
-**3. Conclude that you are ALWAYS right**
+3. **Conclude that you are ALWAYS right**
 4. Explore basic questions and hypotheses (and perhaps rule them out)
 
 ### Lesson 3 - Graphics Devices in R
@@ -214,7 +219,7 @@ dev.off()
 **What do you think is a disadvantage of the Base Plotting System?**
 1. It mirrors how we think of building plots and analyzing data
 2. A complicated plot is a series of simple R commands
-**3. You can't go back once a plot has started**
+3. **You can't go back once a plot has started**
 4. It's intuitive and exploratory
 
 ````Rscript
@@ -235,7 +240,7 @@ qplot(displ, hwy, data = mpg)
 ````
 
 **Which R plotting system is based on an artist's palette?**
-**1. base**
+1. **base**
 2. Winsor&Newton
 3. ggplot2
 4. lattice
@@ -243,31 +248,31 @@ qplot(displ, hwy, data = mpg)
 **Which R plotting system does NOT allow you to annotate plots with separate calls?**
 1. base
 2. Winsor&Newton
-**3. lattice**
+3. **lattice**
 4. ggplot2
 
 **Which R plotting system combines the best features of the other two?**
-**1. ggplot2**
+1. **ggplot2**
 2. lattice
 3. Winsor&Newton
 4. base
 
 **Which R plotting system uses a graphics grammar?**
-**1. ggplot2**
+1. **ggplot2**
 2. Winsor&Newton
 3. lattice
 4. base
 
 Which R plotting system forces you to make your entire plot with one call?**
 1. ggplot2
-**2. lattice**
+2. **lattice**
 3. base
 4. Winsor&Newton
 
 **Which of the following sells high quality artists' brushes?**
 1. lattice
 2. ggplot2
-**3. Winsor&Newton**
+3. **Winsor&Newton**
 4. base
 
 ### Lesson 5 - Base Plotting System
@@ -276,7 +281,7 @@ Which R plotting system forces you to make your entire plot with one call?**
 1. It mirrors how we think of building plots and analyzing data
 2. It's intuitive and exploratory
 3. A complicated plot is a series of simple R commands
-**4. You can't go back once a plot has started**
+4. **You can't go back once a plot has started**
 
 ````Rscript
 # Rango
@@ -288,7 +293,7 @@ hist(airquality$Ozone)
 ````
 
 **What is the most frequent count?**
-**1. Under 25**
+1. **Under 25**
 2. Over 100
 3. Between 60 and 75
 4. Over 150
@@ -320,10 +325,11 @@ par()$pin
 ````
 
 **Alternatively, you could have gotten the same result by running par("pin") or par('pin')).**
+
 **What do you think these two numbers represent?**
 1. Coordinates of the center of the plot window
 2. A confidence interval
-**3. Plot dimensions in inches**
+3. **Plot dimensions in inches**
 4. Random numbers
 
 Now, run the command par("fg") or or par('fg') or par()$fg and see what you get.
@@ -336,28 +342,28 @@ par("fg")
 1. Better color
 2. Beautiful color
 3. blue-green
-**4. Background color**
+4. **Background color**
 
 **What do you think the graphical parameter pch controls?**
 1. point control height
 2. pc help
-**3. plot character**
+3. **plot character**
 4. picture characteristics
 
 **What do you think the graphical parameters lty and lwd control respectively?**
-**1. line type and width**
+1. **line type and width**
 2. line length and width
 3. line slope and intercept
 4. line width and type
 
 **What do you think the graphical parameters xlab and ylab control respectively?**
 1. labels for the y- and x- axes
-**2. labels for the x- and y- axes**
+2. **labels for the x- and y- axes**
 
 **As we've seen, R provides several annotating functions. Which of the following is NOT one of them?**
 1. title
 2. points
-**3. hist**
+3. **hist**
 4. lines
 5. text
 
