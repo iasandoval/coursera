@@ -1,5 +1,5 @@
 ## Contenido - Semana 1
-[Regresar a Notas](README.md#semana-1)
+[Regresar a Notas](../README.md#semana-1)
 
 ### Lesson 1 - Principles of Analytics Graphs
 
@@ -263,7 +263,7 @@ qplot(displ, hwy, data = mpg)
 3. lattice
 4. base
 
-Which R plotting system forces you to make your entire plot with one call?**
+**Which R plotting system forces you to make your entire plot with one call?**
 1. ggplot2
 2. **lattice**
 3. base
@@ -411,4 +411,4 @@ plot(airquality$Temp, airquality$Ozone, main = "Ozone and Temperature")
 mtext("Ozone and Weather in New York City", outer = TRUE)
 ````
 
-[Regresar a Notas](README.md#semana-1)
+[Regresar a Notas](../README.md#semana-1)
