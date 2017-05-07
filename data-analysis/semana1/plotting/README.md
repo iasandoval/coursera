@@ -1,5 +1,7 @@
 ## Introduction
 
+> **Please view the [Instructions](#instructions) in order to execute the Scripts**
+
 This assignment uses data from
 the <a href="http://archive.ics.uci.edu/ml/">UC Irvine Machine
 Learning Repository</a>, a popular repository for machine learning
@@ -89,9 +91,7 @@ date. There should be four PNG files and four R code files.
 
 1. Load and execute [week1.R](week1.R): This R Script will load requiered libs, download the zip file, extract it and read the data set.
 
-> Files will be saved in the following locations: 
-> **zip file**
-> dataset/
+> Files will be saved in the following locations: **dataset/**
 
 ````Rscript
 # Load week1.R script
