@@ -1,12 +1,7 @@
 plot3 = function() {
   
-  # Create directory "myPlots" if doesn't exist
-  if(!dir.exists("myPlots")) {
-    dir.create("myPlots")
-  }
-  
   # plot3.png 480x480 px
-  png("myPlots/plot3.png", width = 480, height = 480, units = "px")
+  png("plot3.png", width = 480, height = 480, units = "px")
   
   # Create plot3
   plot(x = sqlData$DateTime, y= sqlData$Sub_metering_1, type = "l", 

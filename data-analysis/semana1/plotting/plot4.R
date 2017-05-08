@@ -1,12 +1,7 @@
 plot4 = function() {
   
-  # Create directory "myPlots" if doesn't exist
-  if(!dir.exists("myPlots")) {
-    dir.create("myPlots")
-  }
-  
   # plot4.png 480x480 px
-  png("myPlots/plot4.png", width = 480, height = 480, units = "px")
+  png("plot4.png", width = 480, height = 480, units = "px")
   
   # Create plot3
   
