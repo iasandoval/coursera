@@ -1,5 +1,5 @@
 ## Contenido - Semana 2
-[Regresar a Notas](README.md#semana-2)
+[Regresar a Notas](../README.md#semana-2)
 
 
 ### Lattice Plotting System
@@ -336,4 +336,4 @@ g + geom_point(alpha = 1/3) + facet_grid(cut ~ car2)+ geom_smooth(method = "lm",
 ggplot(diamonds, aes(carat, price)) + geom_boxplot() + facet_grid(.~cut)
 ````
 
-[Regresar a Notas](README.md#semana-2)
+[Regresar a Notas](../README.md#semana-2)
