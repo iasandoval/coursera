@@ -10,7 +10,13 @@
 
 ## Semana 2
 
-- [Semana 2](semana2/README.md)
+- [Lattice Plotting System](semana2/README.md#lattice-plotting-system)
+- [Working with Colors](semana2/README.md#working-with-colors)
+- [GGPlot2 Part1](semana2/README.md#ggplot2-part1)
+- [GGPlot2 Part2](semana2/README.md#ggplot2-part2)
+- [GGPlot2 Extras](semana2/README.md#ggplot2-extras)
+
+- Quiz de la [Semana 2](semana2/semana2-quiz.md)
 
 ## Semana 3
 
