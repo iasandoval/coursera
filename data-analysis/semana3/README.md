@@ -1,5 +1,5 @@
 ## Contenido - Semana 3
-[Regresar a Notas](README.md#semana-3)
+[Regresar a Notas](../README.md#semana-3)
 
 ### Lesson 1: Hierarchical Clustering
 
@@ -198,4 +198,4 @@ PCA is a method to reduce a high-dimensional data set to its essential elements 
 ````
 
 
-[Regresar a Notas](README.md#semana-3)
+[Regresar a Notas](../README.md#semana-3)
