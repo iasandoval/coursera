@@ -20,10 +20,10 @@
 
 ## Semana 3
 
-- Lesson 1: [Hierarchical Clustering](semana3/README.md#)
-- Lesson 2: [K Means Clustering](semana3/README.md#)
-- Lesson 3: [Dimension Reduction](semana3/README.md#)
-- Lesson 4: [Clustering Example](semana3/README.md#)
+- Lesson 1: [Hierarchical Clustering](semana3/README.md#lesson-1-hierarchical-clustering)
+- Lesson 2: [K Means Clustering](semana3/README.md#lesson-2-k-means-clustering)
+- Lesson 3: [Dimension Reduction](semana3/README.md#lesson-3-dimension-reduction)
+- Lesson 4: [Clustering Example](semana3/README.md#lesson-4-clustering-example)
 
 ## Semana 4
 
