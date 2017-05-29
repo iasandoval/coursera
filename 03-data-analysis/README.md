@@ -27,4 +27,10 @@
 
 ## Semana 4
 
-- [Semana 4](semana4/README.md)
+- [Instructions](semana4/README.md#instructions)
+- [Review criteria](semana4/README.md#review-criteria)
+- [Data](semana4/README.md#data)
+- [Assignment](semana4/README.md#assignment)
+- [Questions](semana4/README.md#questions)
+- [Making and Submitting Plots](semana4/README.md#making-and-submitting-plots)
+- [Assignment Submission](semana4/assignment.md)
