@@ -6,7 +6,7 @@
 
 * [week4.R](week4.R)
 
-````Rscript
+````Rscript
 week4 = function() {
 
   # Load requiered libs
@@ -81,7 +81,7 @@ loadLibs = function() {
 
   library(ggplot2)
 }
-````
+````
 
 ### Assignment
 
@@ -89,7 +89,7 @@ loadLibs = function() {
 
 * [plot1.R](plot1.R)
 
-````Rscript
+````Rscript
 plot1 = function() {
   # plot1.png 480x480 px
   png("plot1.png", width = 480, height = 480, units = "px")
@@ -111,7 +111,7 @@ plot1 = function() {
   # PNG Device Off
   dev.off()  
 }
-````
+````
 
 ![plot1](plot1.png)
 
@@ -119,7 +119,7 @@ plot1 = function() {
 
 * [plot2.R](plot2.R)
 
-````Rscript
+````Rscript
 plot2 = function() {
   # plot2.png 480x480 px
   png("plot2.png", width = 480, height = 480, units = "px")
@@ -144,7 +144,7 @@ plot2 = function() {
   # PNG Device Off
   dev.off()  
 }
-````
+````
 
 ![plot2](plot2.png)
 
@@ -152,7 +152,7 @@ plot2 = function() {
 
 * [plot3.R](plot3.R)
 
-````Rscript
+````Rscript
 plot3 = function() {
   # plot3.png 800x480 px
   png("plot3.png", width = 800, height = 480, units = "px")
@@ -173,7 +173,7 @@ plot3 = function() {
   # PNG Device Off
   dev.off()
 }
-````
+````
 
 ![plot3](plot3.png)
 
@@ -181,7 +181,7 @@ plot3 = function() {
 
 * [plot4.R](plot4.R)
 
-````Rscript
+````Rscript
 plot4 = function() {
   # plot4.png 480x480 px
   png("plot4.png", width = 480, height = 480, units = "px")
@@ -202,7 +202,7 @@ plot4 = function() {
   # PNG Device Off
   dev.off()  
 }
-````
+````
 
 ![plot4](plot4.png)
 
@@ -210,7 +210,7 @@ plot4 = function() {
 
 * [plot5.R](plot5.R)
 
-````Rscript
+````Rscript
 plot5 = function() {
   # plot5.png 480x480 px
   png("plot5.png", width = 480, height = 480, units = "px")
@@ -229,7 +229,7 @@ plot5 = function() {
   # PNG Device Off
   dev.off()  
 }
-````
+````
 
 ![plot5](plot5.png)
 
@@ -237,7 +237,7 @@ plot5 = function() {
 
 * [plot6.R](plot6.R)
 
-````Rscript
+````Rscript
 plot6 = function() {
   # plot6.png 800x480 px
   png("plot6.png", width = 800, height = 480, units = "px")
@@ -258,7 +258,7 @@ plot6 = function() {
   # PNG Device Off
   dev.off()  
 }
-````
+````
 
 ![plot6](plot6.png)
 
