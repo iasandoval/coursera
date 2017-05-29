@@ -15,7 +15,7 @@ plot2 = function() {
     names.arg = aggBaltByYear$year,
     col = heat.colors(4),
     ylim = c(0, 3500),
-    xlab="Year",
+    xlab="",
     ylab="PM2.5 Emissions",
     main="Total PM2.5 Emissions From All Baltimore Sources"
   )
