@@ -1,0 +1,117 @@
+---
+title: "Reproducible Research: Peer Assessment 1"
+output: 
+  html_document:
+    keep_md: true
+---
+
+
+## Loading and preprocessing the data
+
+The following code will download **activity.zip** from:
+
+* Dataset: [Activity monitoring data](https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip) [52K]
+
+After that, code will unzip the file and read the CSV.
+
+```{r echo = TRUE}
+
+  # URL to download activity.zip
+  datasetUrl = "https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip"
+  zipName = "activity.zip"
+
+  # If file doesn't exist, download it
+  if(!file.exists(zipName)) {
+    download.file(datasetUrl, destfile="./", method="wininet", mode = "wb")
+  }
+  
+  # Upzip activity.zip
+  unzip(zipName)
+  
+  # Read activity.csv
+  data = read.csv("activity.csv")
+  
+  # Head of data
+  head(data)
+```
+
+Next steps are to perform the data transformation of the date column.
+
+1. Verify data type of date column:
+```{r echo = TRUE}
+  # Verify data type of date column:
+  str(data$date)
+```
+
+2. Transfor the date column to Date data type:
+```{r echo = TRUE}
+  # Transform from Factor to Date
+  data$date = as.Date(data$date, format = "%Y-%m-%d")
+```
+
+3. Verify data type of date column:
+```{r echo = TRUE}
+  # Verify data type of date column:
+  str(data$date)
+```
+
+## What is mean total number of steps taken per day?
+
+1. Calculate the total number of steps taken per day
+```{r echo = TRUE}
+  # Calculate the steps by day
+  stepsByDay = aggregate(steps ~ date, data, sum)
+
+  # Head of stepsByDay
+  head(stepsByDay)
+
+  # Validate NA for stepsByDay
+  any(is.na(stepsByDay))
+```
+
+2. Make a histogram of the total number of steps taken each day
+```{r plot, fig.width=10, echo = TRUE}
+ 
+  # Create plot steps by day
+  plot(stepsByDay$date, stepsByDay$steps, 
+       type="h", 
+       main="Histogram of Steps by Date",
+       xlab="Date", 
+       ylab="Steps", 
+       col="blue",
+       lwd=5
+       )
+
+  # Mean of the steps
+  abline(h=mean(stepsByDay$steps), col="red", lwd=2)
+```
+
+```{r histogram, fig.width=10, echo = TRUE}
+  # Create histogram with the frequency of steps
+  hist(stepsByDay$steps, main = "Total Steps by Day", col="blue", xlab="Number of Steps")
+```
+
+
+3. Calculate and report the mean and median of the total number of steps taken per day
+```{r echo = TRUE}
+  # Summary of steps by day
+  summary(stepsByDay)
+
+  # Mean of steps
+  mean(stepsByDay$steps)
+
+  # Meadian of steps
+  median(stepsByDay$steps)
+
+```
+
+
+## What is the average daily activity pattern?
+
+
+
+## Imputing missing values
+
+
+
+## Are there differences in activity patterns between weekdays and weekends?
