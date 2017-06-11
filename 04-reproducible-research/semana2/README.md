@@ -94,7 +94,7 @@ For this part the ````RScript weekdays()```` function may be of some help here. 
 To submit the assignment:
 
 1. Commit your completed [PA1_template.Rmd](PA1_template.Rmd) file to the ````master```` branch of your git repository (you should already be on the **master** branch unless you created new ones)
-2. Commit your PA1_template.md and PA1_template.html files produced by processing your R markdown file with knit2html() function in R (from the knitr package) by running the function from the console.
+2. Commit your [PA1_template.md](PA1_template.md) and [PA1_template.html](PA1_template.html) files produced by processing your R markdown file with knit2html() function in R (from the knitr package) by running the function from the console.
 3. If your document has figures included (it should) then they should have been placed in the figure/ directory by default (unless you overrided the default). Add and commit the figure/ directory to your git repository so that the figures appear in the markdown file when it displays on github.
 4. Push your master branch to GitHub.
 5. Submit the URL to your GitHub repository for this assignment on the course web site.
