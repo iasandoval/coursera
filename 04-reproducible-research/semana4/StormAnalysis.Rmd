@@ -1,0 +1,219 @@
+---
+title: "The Most Harmful Natural Events to Population Health and the Economic Consequences"
+author: Ignacio Sandoval
+output: 
+  html_document:
+    keep_md: true
+---
+
+## Synopsis
+
+events are most harmful to population health
+events have the greatest economic consequences
+
+
+## Data Processing
+
+### Requiered Libraries
+
+Below are the libraries requiered to perform the data transformation and analysis.
+
+* lubridate
+* dplyr
+* ggplot2
+
+```{r echo=FALSE, message=FALSE}
+  # Install lubridate library
+  if(!require(lubridate)){
+    install.packages("lubridate", repos = "https://cran.rstudio.com/")
+  }
+
+  # Install dplyr library
+  if(!require(dplyr)){
+    install.packages("dplyr", repos = "https://cran.rstudio.com/")
+  }
+
+  # Install ggplot2 library
+  if(!require(ggplot2)){
+    install.packages("ggplot2", repos = "https://cran.rstudio.com/")
+  }
+```
+
+### Loading the data
+
+The following code will download the file **StormData.csv.bz2** from:
+
+* [Storm Data](https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2) [47Mb]
+
+After file has been downloaded, code will read the compressed CSV.
+
+```{r echo = TRUE}
+
+  # URL to download StormData.csv.bz2
+  datasetUrl = "https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2"
+  zipName = "StormData.csv.bz2"
+  
+  # If file doesn't exist, download it
+  if (!file.exists(zipName)) {
+    download.file(datasetUrl,
+                  destfile = zipName,
+                  method = "wininet",
+                  mode = "wb")
+  }
+
+  # Read StormData.csv
+  data = read.csv(zipName)
+  
+  # Head of data
+  head(data)
+```
+
+### Data transformation
+
+**Transform date/time variables**
+
+
+```{r echo = TRUE}
+
+  # Upper case Time Zone
+  data$TIME_ZONE = toupper(data$TIME_ZONE)
+
+  # Convert date column
+  data$BGN_DATE = mdy_hms(data$BGN_DATE)
+  
+  # Format time column
+  fTime = function (d, t, tz) {
+    d = toString(d)
+    t = toString(t)
+    tz = toString(tz)
+    
+    if (nchar(t) == 4) {
+      if (t == "0000" | t == "2400" | t == "000") {
+        dt = paste(d, "00:00:00")
+      } else {
+        dt = paste(paste(d, sub("([[:digit:]]{2,2})$", ":\\1", t)), ":00", sep = "")
+      }
+    } else {
+      dt = paste(d, t)
+    }
+    
+    return(paste(dt, tz))
+  }
+   
+  data$BGN_DATETIME_STR = mapply(fTime, data$BGN_DATE, data$BGN_TIME, data$TIME_ZONE)
+   
+  data$BGN_DATETIME = ymd_hms(data$BGN_DATETIME_STR)
+  
+  # subset = data[is.na(data$BGN_DATETIME),]
+
+```
+
+**Transform Event Type**
+
+
+
+```{r echo = TRUE}
+
+  # Upper case Type of Event
+  data$EVTYPE = toupper(data$EVTYPE)
+
+  # Subset of FATALITIES and INJURIES by Event Type
+  eventsFatal = subset(aggregate(FATALITIES ~ EVTYPE, data, sum), FATALITIES > 0)
+  eventsInjur = subset(aggregate(INJURIES ~ EVTYPE, data, sum), INJURIES > 0)
+  harmfulEvents = full_join(eventsFatal, eventsInjur, by = "EVTYPE")
+  
+  # Create main groups of events types
+  key = c("AVALANC", 
+          "COLD", "FREEZ", "FROST", "HYPOTHERMIA", "HYPERTHERMIA", "LOW TEMPERATURE", "ICE", "ICY", 
+          "HEAT", 
+          "HAIL", "GLAZE",
+          "FLOOD", "FLD", "RAPIDLY RISING WATER",
+          "FOG", 
+          "FIRE",
+          "RAIN",
+          "HEAVY SURF", "HIGH SURF",
+          "RIP CURRENT", 
+          "MUDSLIDE", "LANDSLIDE",
+          "HURRICANE", 
+          "LIGHTNING", 
+          "SNOW", "SLEET", "WINTRY MIX",
+          "TORNADO", 
+          "TSUNAMI",
+          "THUNDERSTORM", "THUNDER STORM", "STORM",
+          "WARM", "WIND", "WINTER")
+  
+  value = c("AVALANCHE", 
+            "COLD", "COLD", "COLD", "COLD", "COLD", "COLD", "COLD", "COLD",
+            "HEAT", 
+            "HAIL", "HAIL",
+            "FLOOD", "FLOOD", "FLOOD", 
+            "FOG",
+            "FIRE",
+            "RAIN",
+            "HEAVY SURF", "HIGH SURF",
+            "RIP CURRENTS", 
+            "SLIDES", "SLIDES",
+            "HURRICANE",   
+            "LIGHTNING", 
+            "SNOW", "SNOW", "SNOW", 
+            "TORNADO",
+            "TSUNAMI",
+            "THUNDERSTORM", "THUNDERSTORM", "STORM",
+            "WARM", "WIND", "WINTER")
+  
+  mapEvents = data.frame(key, value)
+  
+  # Function to create a class based on text
+  funClass = function(value) {
+  
+    map = as.data.frame(mapEvents)
+    
+    for (i in 1:nrow(map)) {
+      v = map[i,]
+      k = toString(v[,1])
+      v = toString(v[,2])
+      
+      if(grepl(k, value)) {
+        res = v
+        return(res)
+        break;
+      }
+    }
+    
+    return("OTHER")
+    # return(value)
+  }
+  
+  # Clean subset of FATALITIES and INJURIES by Class (Main event Type)
+  harmfulEvents$CLASS = as.factor(unlist(lapply(harmfulEvents$EVTYPE, funClass)))
+  eventsFatalClean = subset(aggregate(FATALITIES ~ CLASS, harmfulEvents, sum), FATALITIES > 0)
+  eventsInjurClean = subset(aggregate(INJURIES ~ CLASS, harmfulEvents, sum), INJURIES > 0)
+  harmfulEventsClean = full_join(eventsFatalClean, eventsInjurClean, by = "CLASS")
+
+```
+
+
+
+```{r echo = TRUE}
+  # subset = data[245000:250000,]
+
+  
+  
+  
+
+```
+
+
+
+## Results
+
+### Most harmful events to population health
+
+
+
+### Events with the greatest economic consequences
+
+
+
+
+

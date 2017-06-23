@@ -16,3 +16,5 @@
 
 
 ## Semana 4: Case Studies & Commentaries
+
+- [Assignment](semana4/README.md)
