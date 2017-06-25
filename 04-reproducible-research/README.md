@@ -18,3 +18,5 @@
 ## Semana 4: Case Studies & Commentaries
 
 - [Assignment](semana4/README.md)
+- [Storm Analysis](semana4/StormAnalysis.md)
+- [Storm Analysis on RPub](http://rpubs.com/iasandoval/287260)
