@@ -12,3 +12,6 @@
 02-cleaning-data/project/UCI HAR Dataset/
 03-data-analysis/semana4/NEI_data/
 *.bz2
+04-reproducible-research/semana4/rsconnect/
+04-reproducible-research/semana4/StormAnalysis_cache/
+*.RData

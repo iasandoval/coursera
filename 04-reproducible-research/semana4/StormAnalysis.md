@@ -1,11 +1,6 @@
----
-title: "The Most Harmful Natural Events to Population Health and the Economic Consequences"
-author: Ignacio Sandoval
-date: 2017-06-25
-output: 
-  html_document:
-    keep_md: true
----
+# The Most Harmful Natural Events to Population Health and the Economic Consequences
+Ignacio Sandoval  
+2017-06-25  
 
 ## Synopsis
 
@@ -24,7 +19,8 @@ Below are the libraries Required to perform the data transformation and analysis
 * **ggplot2:** Used to create the plots.
 * **reshape2:** Used to melt data frame.
 
-```{r echo=TRUE, message=FALSE}
+
+```r
   # Install lubridate library
   if(!require(lubridate)){
     install.packages("lubridate", repos = "https://cran.rstudio.com/")
@@ -54,8 +50,8 @@ The following code will download the file **StormData.csv.bz2** from:
 
 After file has been downloaded, code will read the compressed CSV.
 
-```{r echo = TRUE, cache = TRUE}
 
+```r
   # URL to download StormData.csv.bz2
   datasetUrl = "https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2"
   zipName = "StormData.csv.bz2"
@@ -75,6 +71,47 @@ After file has been downloaded, code will read the compressed CSV.
   str(data)
 ```
 
+```
+## 'data.frame':	902297 obs. of  37 variables:
+##  $ STATE__   : num  1 1 1 1 1 1 1 1 1 1 ...
+##  $ BGN_DATE  : Factor w/ 16335 levels "1/1/1966 0:00:00",..: 6523 6523 4242 11116 2224 2224 2260 383 3980 3980 ...
+##  $ BGN_TIME  : Factor w/ 3608 levels "00:00:00 AM",..: 272 287 2705 1683 2584 3186 242 1683 3186 3186 ...
+##  $ TIME_ZONE : Factor w/ 22 levels "ADT","AKS","AST",..: 7 7 7 7 7 7 7 7 7 7 ...
+##  $ COUNTY    : num  97 3 57 89 43 77 9 123 125 57 ...
+##  $ COUNTYNAME: Factor w/ 29601 levels "","5NM E OF MACKINAC BRIDGE TO PRESQUE ISLE LT MI",..: 13513 1873 4598 10592 4372 10094 1973 23873 24418 4598 ...
+##  $ STATE     : Factor w/ 72 levels "AK","AL","AM",..: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ EVTYPE    : Factor w/ 985 levels "   HIGH SURF ADVISORY",..: 834 834 834 834 834 834 834 834 834 834 ...
+##  $ BGN_RANGE : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ BGN_AZI   : Factor w/ 35 levels "","  N"," NW",..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ BGN_LOCATI: Factor w/ 54429 levels "","- 1 N Albion",..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ END_DATE  : Factor w/ 6663 levels "","1/1/1993 0:00:00",..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ END_TIME  : Factor w/ 3647 levels ""," 0900CST",..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ COUNTY_END: num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ COUNTYENDN: logi  NA NA NA NA NA NA ...
+##  $ END_RANGE : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ END_AZI   : Factor w/ 24 levels "","E","ENE","ESE",..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ END_LOCATI: Factor w/ 34506 levels "","- .5 NNW",..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ LENGTH    : num  14 2 0.1 0 0 1.5 1.5 0 3.3 2.3 ...
+##  $ WIDTH     : num  100 150 123 100 150 177 33 33 100 100 ...
+##  $ F         : int  3 2 2 2 2 2 2 1 3 3 ...
+##  $ MAG       : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ FATALITIES: num  0 0 0 0 0 0 0 0 1 0 ...
+##  $ INJURIES  : num  15 0 2 2 2 6 1 0 14 0 ...
+##  $ PROPDMG   : num  25 2.5 25 2.5 2.5 2.5 2.5 2.5 25 25 ...
+##  $ PROPDMGEXP: Factor w/ 19 levels "","-","?","+",..: 17 17 17 17 17 17 17 17 17 17 ...
+##  $ CROPDMG   : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ CROPDMGEXP: Factor w/ 9 levels "","?","0","2",..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ WFO       : Factor w/ 542 levels ""," CI","$AC",..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ STATEOFFIC: Factor w/ 250 levels "","ALABAMA, Central",..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ ZONENAMES : Factor w/ 25112 levels "","                                                                                                               "| __truncated__,..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ LATITUDE  : num  3040 3042 3340 3458 3412 ...
+##  $ LONGITUDE : num  8812 8755 8742 8626 8642 ...
+##  $ LATITUDE_E: num  3051 0 0 0 0 ...
+##  $ LONGITUDE_: num  8806 0 0 0 0 ...
+##  $ REMARKS   : Factor w/ 436781 levels "","-2 at Deer Park\n",..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ REFNUM    : num  1 2 3 4 5 6 7 8 9 10 ...
+```
+
 ### Data transformation
 
 #### Relevant Variables
@@ -92,7 +129,8 @@ The relevant variables are:
 * **PROPDMG:** Property damage estimate in dollar amounts.
 * **PROPDMGEXP:** Alphabetical characters used to signify magnitude include "K" for thousands, "M" for millions, and "B" for billions. 
 
-```{r echo = TRUE}
+
+```r
   # Subset of relevant variables if there are values > 0
   dataRelevant = subset(data, 
                         FATALITIES > 0 | INJURIES > 0 | PROPDMG > 0,
@@ -103,11 +141,24 @@ The relevant variables are:
   str(dataRelevant)
 ```
 
+```
+## 'data.frame':	248802 obs. of  8 variables:
+##  $ BGN_DATE  : Factor w/ 16335 levels "1/1/1966 0:00:00",..: 6523 6523 4242 11116 2224 2224 2260 383 3980 3980 ...
+##  $ BGN_TIME  : Factor w/ 3608 levels "00:00:00 AM",..: 272 287 2705 1683 2584 3186 242 1683 3186 3186 ...
+##  $ STATE     : Factor w/ 72 levels "AK","AL","AM",..: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ EVTYPE    : Factor w/ 985 levels "   HIGH SURF ADVISORY",..: 834 834 834 834 834 834 834 834 834 834 ...
+##  $ FATALITIES: num  0 0 0 0 0 0 0 0 1 0 ...
+##  $ INJURIES  : num  15 0 2 2 2 6 1 0 14 0 ...
+##  $ PROPDMG   : num  25 2.5 25 2.5 2.5 2.5 2.5 2.5 25 25 ...
+##  $ PROPDMGEXP: Factor w/ 19 levels "","-","?","+",..: 17 17 17 17 17 17 17 17 17 17 ...
+```
+
 #### Transform date/time variables
 
 Next, is to convert the date/time variables to the proper type. This will help us to determine, for example, the month with more event occurrences, or the time where these events ocurred.
 
-```{r echo = TRUE, }
+
+```r
   # Convert date column
   dataRelevant = within(dataRelevant, {BGN_DATE = mdy_hms(BGN_DATE)})
   
@@ -135,14 +186,27 @@ Next, is to convert the date/time variables to the proper type. This will help u
   str(dataRelevant)
 ```
 
+```
+## 'data.frame':	248802 obs. of  9 variables:
+##  $ BGN_DATE  : POSIXct, format: "1950-04-18" "1950-04-18" ...
+##  $ BGN_TIME  : Factor w/ 3608 levels "00:00:00 AM",..: 272 287 2705 1683 2584 3186 242 1683 3186 3186 ...
+##  $ STATE     : Factor w/ 72 levels "AK","AL","AM",..: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ EVTYPE    : Factor w/ 985 levels "   HIGH SURF ADVISORY",..: 834 834 834 834 834 834 834 834 834 834 ...
+##  $ FATALITIES: num  0 0 0 0 0 0 0 0 1 0 ...
+##  $ INJURIES  : num  15 0 2 2 2 6 1 0 14 0 ...
+##  $ PROPDMG   : num  25 2.5 25 2.5 2.5 2.5 2.5 2.5 25 25 ...
+##  $ PROPDMGEXP: Factor w/ 19 levels "","-","?","+",..: 17 17 17 17 17 17 17 17 17 17 ...
+##  $ DATE_TIME : POSIXct, format: "1950-04-18 01:30:00" "1950-04-18 01:45:00" ...
+```
+
 #### Transform Event Type
 
 A "key-value" data frame has been created in order to create a main group to describe in a general form the "Event Type" occurred. Being this, the hardest part of the analysis.
 
 This transformation will help to have a big picture of the type of events.
 
-```{r echo = TRUE}
 
+```r
   # Upper case Type of Event and trim white spaces
   dataRelevant = within(dataRelevant, {EVTYPE = trimws(toupper(EVTYPE))})
 
@@ -220,6 +284,21 @@ This transformation will help to have a big picture of the type of events.
   str(dataRelevant)
 ```
 
+```
+## 'data.frame':	248802 obs. of  11 variables:
+##  $ EVTYPE    : chr  "?" "APACHE COUNTY" "ASTRONOMICAL HIGH TIDE" "ASTRONOMICAL HIGH TIDE" ...
+##  $ BGN_DATE  : POSIXct, format: "1994-02-09" "1994-07-30" ...
+##  $ BGN_TIME  : Factor w/ 3608 levels "00:00:00 AM",..: 1143 62 1022 1109 482 302 1923 1203 1383 1022 ...
+##  $ STATE     : Factor w/ 72 levels "AK","AL","AM",..: 70 7 12 8 68 13 8 8 8 44 ...
+##  $ FATALITIES: num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ INJURIES  : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ PROPDMG   : num  5 5 1 20 90 2.5 800 5 10 5 ...
+##  $ PROPDMGEXP: Factor w/ 19 levels "","-","?","+",..: 17 17 19 17 17 19 17 17 17 19 ...
+##  $ DATE_TIME : POSIXct, format: "1994-02-09 06:00:00" "1994-07-30 00:00:00" ...
+##  $ COUNT     : int  1 1 8 8 8 8 8 8 8 8 ...
+##  $ CLASS     : Factor w/ 22 levels "AVALANCHE","BLIZZARD",..: 13 13 13 13 13 13 13 13 13 13 ...
+```
+
 #### Transform Property Damage
 
 In this step, the PROPDMG and PROPDMGEXP are merged and converted to a numeric variable.
@@ -230,7 +309,8 @@ Under PROPDMGEXP, the values are K, M and B, which stand for:
 * **M** Millions
 * **B** Billions
 
-```{r echo = TRUE}
+
+```r
   # Upper case Property Damage Expenses
   dataRelevant = within(dataRelevant, {PROPDMGEXP = trimws(toupper(PROPDMGEXP))})
 
@@ -253,17 +333,43 @@ Under PROPDMGEXP, the values are K, M and B, which stand for:
   str(dataRelevant)
 ```
 
+```
+## 'data.frame':	248802 obs. of  12 variables:
+##  $ EVTYPE    : chr  "?" "APACHE COUNTY" "ASTRONOMICAL HIGH TIDE" "ASTRONOMICAL HIGH TIDE" ...
+##  $ BGN_DATE  : POSIXct, format: "1994-02-09" "1994-07-30" ...
+##  $ BGN_TIME  : Factor w/ 3608 levels "00:00:00 AM",..: 1143 62 1022 1109 482 302 1923 1203 1383 1022 ...
+##  $ STATE     : Factor w/ 72 levels "AK","AL","AM",..: 70 7 12 8 68 13 8 8 8 44 ...
+##  $ FATALITIES: num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ INJURIES  : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ PROPDMG   : num  5 5 1 20 90 2.5 800 5 10 5 ...
+##  $ PROPDMGEXP: chr  "K" "K" "M" "K" ...
+##  $ DATE_TIME : POSIXct, format: "1994-02-09 06:00:00" "1994-07-30 00:00:00" ...
+##  $ COUNT     : int  1 1 8 8 8 8 8 8 8 8 ...
+##  $ CLASS     : Factor w/ 22 levels "AVALANCHE","BLIZZARD",..: 13 13 13 13 13 13 13 13 13 13 ...
+##  $ AMOUNT_DMG: num  5000 5000 1000000 20000 90000 2500000 800000 5000 10000 5000000 ...
+```
+
 #### States
 
 There is no transformation/cleaning on the STATE variable.
 
-```{r echo = TRUE}
 
+```r
   # Data frame with states
   states = as.data.frame(table(dataRelevant$STATE))
 
   # head of States
   head(states)
+```
+
+```
+##   Var1  Freq
+## 1   AK   523
+## 2   AL 11093
+## 3   AM    19
+## 4   AN    29
+## 5   AR  7011
+## 6   AS    44
 ```
 
 #### Final dataset
@@ -280,7 +386,8 @@ The final variables are:
 * **AMOUNT_DMG:** Property damage estimate in dollar amounts.
 * **CLASS:** Classification of the type of event.
 
-```{r echo = TRUE}
+
+```r
   # Keep only relevant variables
   dataRelevant = subset(dataRelevant,
                         select = c(EVTYPE, STATE, DATE_TIME, FATALITIES, INJURIES, 
@@ -293,6 +400,16 @@ The final variables are:
   head(dataRelevant)
 ```
 
+```
+##    EVTYPE STATE           DATE_TIME FATALITIES INJURIES AMOUNT_DMG   CLASS
+## 1 TORNADO    MO 1950-01-03 11:00:00          0        3    2500000 TORNADO
+## 2 TORNADO    IL 1950-01-03 11:10:00          0        0     250000 TORNADO
+## 3 TORNADO    IL 1950-01-03 11:55:00          0        3     250000 TORNADO
+## 4 TORNADO    OH 1950-01-03 16:00:00          0        1      25000 TORNADO
+## 5 TORNADO    AR 1950-01-13 05:25:00          1        1       2500 TORNADO
+## 6 TORNADO    MO 1950-01-25 19:30:00          0        5     250000 TORNADO
+```
+
 ## Results
 
 As per analysis, and the following figures, we can determine that:
@@ -302,7 +419,8 @@ As per analysis, and the following figures, we can determine that:
 
 ### Most harmful events to population health
 
-```{r echo = TRUE}
+
+```r
   # Subset of FATALITIES and INJURIES by Event Type
   eventsFatal = aggregate(FATALITIES ~ CLASS, dataRelevant, sum)
   eventsInjur = aggregate(INJURIES ~ CLASS, dataRelevant, sum)
@@ -321,7 +439,22 @@ As per analysis, and the following figures, we can determine that:
   head(harmfulEvents, 10)
 ```
 
-```{r echo = TRUE, harmfulEvents, fig.width = 10}
+```
+##           CLASS FATALITIES INJURIES
+## 1       TORNADO       5636    91407
+## 2          HEAT       3138     9224
+## 3         FLOOD       1554     8681
+## 4          WIND        978     8866
+## 5          COLD        865     4449
+## 6     LIGHTNING        817     5232
+## 7  RIP CURRENTS        572      529
+## 8     AVALANCHE        225      171
+## 9  THUNDERSTORM        210     2477
+## 10         SNOW        147     1228
+```
+
+
+```r
   ggplot(harmfulEventsTop, 
          aes(x=CLASS, y=COUNT, fill=CLASS)) + 
          geom_bar(stat = "identity") +
@@ -331,10 +464,12 @@ As per analysis, and the following figures, we can determine that:
          ggtitle("Top 10 harmful events to population health")
 ```
 
+![](StormAnalysis_files/figure-html/harmfulEvents-1.png)<!-- -->
+
 ### Events with the greatest economic consequences
 
-```{r echo = TRUE}
 
+```r
   # Subset of Amount of Damage by Event Type
   eventsAmount = aggregate(AMOUNT_DMG ~ CLASS, dataRelevant, sum)
 
@@ -354,7 +489,22 @@ As per analysis, and the following figures, we can determine that:
   head(eventsAmount, 10)
 ```
 
-```{r echo = TRUE, eventsAmount, fig.width = 10}
+```
+##           CLASS   AMOUNT_DMG
+## 1         FLOOD 167582283582
+## 2     HURRICANE  84756180010
+## 3       TORNADO  56993097979
+## 4         STORM  55685395550
+## 5          HAIL  17620991072
+## 6          COLD  11035631811
+## 7          WIND  10572542118
+## 8          FIRE   8501628500
+## 9  THUNDERSTORM   6430769959
+## 10         RAIN   3238430690
+```
+
+
+```r
   ggplot(eventsAmountTop, aes(x="", y = AMOUNT_DMG, fill = CLASS)) + 
          geom_bar(width = 1, stat = "identity") + 
          coord_polar(theta = "y") +
@@ -363,3 +513,5 @@ As per analysis, and the following figures, we can determine that:
          labs(x = "", y = "Amount of the Damage (in Billions of dlls)") +
          ggtitle("Top 10 Events with the greatest economic consequences")
 ```
+
+![](StormAnalysis_files/figure-html/eventsAmount-1.png)<!-- -->
