@@ -64,10 +64,10 @@ Consider the following PMF shown below in R
   temp <- rbind(x, p)
   rownames(temp) <- c("X", "Prob")
   temp
-
 ```
+
+```RScript
   ## [,1] [,2] [,3] [,4]
-  ```RScript
   ## X 1.0 2.0 3.0 4.0
   ## Prob 0.1 0.2 0.3 0.4
 ```
@@ -80,7 +80,7 @@ What is the mean?
   Xmean <- sum(temp["X",] * temp["Prob",])
   Xmean
   ## [1] 3
-```RScript
+```
 
 1. 2
 2. **3**
