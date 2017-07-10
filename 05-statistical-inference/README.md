@@ -11,6 +11,7 @@
 
 ## Semana 2: Variability, Distribution, & Asymptotics
 
+- [Quiz - Semana 2](semana2/quiz-semana2.md)
 
 
 ## Semana 3: Intervals, Testing, & Pvalues
