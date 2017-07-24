@@ -16,5 +16,9 @@
 
 ## Semana 3: Intervals, Testing, & Pvalues
 
+- [Quiz - Semana 3](semana3/quiz-semana3.md)
+
 
 ## Semana 4: Power, Bootstrapping, & Permutation Tests
+
+- [Quiz - Semana 4](semana4/quiz-semana4.md)
